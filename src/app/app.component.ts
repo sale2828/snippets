@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ChildActivationEnd, Router } from '@angular/router';
+import { filter, first, map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'snippets';
+  private router = inject(Router);
+  firstRouteLoaded$ = this.router.events.pipe(
+    filter((event) => event instanceof ChildActivationEnd),
+    first(),
+    map(() => {
+      return true;
+    }),
+  );
 }
+
