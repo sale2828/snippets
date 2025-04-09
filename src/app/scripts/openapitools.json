@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.12.0",
+    "generators": {
+      "api": {
+        "generatorName": "typescript-angular",
+        "output": "./src/app/FDM/api",
+        "inputSpec": "src/app/fdm/api-swagger.json",
+        "ignoreFileOverride": "./.openapi-generator-ignore",
+        "additionalProperties": {
+          "fileNaming": "kebab-case",
+          "serviceFileSuffix": "-api",
+          "serviceSuffix": "ApiService",
+          "useSingleRequestParameter": true,
+          "typescriptThreePlus": true,
+          "prependFormOrBodyParameters": false,
+          "supportsES6": true,
+          "useArraySyntax": true
+        },
+        "skipValidateSpec": true,
+        "typeMappings": {
+          "DateTime": "string",
+          "date": "Date",
+          "string+byte": "file"
+        },
+        "enablePostProcessFile": true
+      }
+    }
+  }
+}
